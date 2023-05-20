@@ -26,6 +26,7 @@ import java.util.Random;
  * @author ppc
  * @since 2023-05-13
  */
+@CrossOrigin
 @RestController
 @Api(tags = "医院设置信息")
 @RequestMapping("/admin/hosp/hospitalSet")
@@ -56,8 +57,8 @@ public class HospitalSetController {
         Page<HospitalSet> page = new Page<HospitalSet>(pageNum, size);
 
         QueryWrapper<HospitalSet> queryWrapper = new QueryWrapper<HospitalSet>();
-        queryWrapper.like(hospitalSetQueryVo.getHosname() != null, "hosname", hospitalSetQueryVo.getHosname())
-                .eq(hospitalSetQueryVo.getHoscode() != null, "hoscode", hospitalSetQueryVo.getHoscode());
+        queryWrapper.like(hospitalSetQueryVo.getHosname() != null && hospitalSetQueryVo.getHosname() !="", "hosname", hospitalSetQueryVo.getHosname())
+                .eq(hospitalSetQueryVo.getHoscode() != null && hospitalSetQueryVo.getHoscode() !="", "hoscode", hospitalSetQueryVo.getHoscode());
 
         hospitalSetService.page(page, queryWrapper);
 
@@ -83,17 +84,24 @@ public class HospitalSetController {
         return R.ok().data("item", hospitalSetService.getById(id));
     }
 
-    @ApiOperation("根据id修改数据")
-    @GetMapping("/update/{id}")
+    @ApiOperation("修改数据")
+    @PutMapping("/update")
     public R update(@RequestBody HospitalSet hospitalSet) {
         hospitalSetService.updateById(hospitalSet);
         return R.ok();
     }
 
     @ApiOperation("批量删除")
-    @DeleteMapping("/delete")
+    @DeleteMapping("/batchDelete")
     public R batchDelete(@RequestBody List<Integer> ids) {
         hospitalSetService.removeBatchByIds(ids);
+        return R.ok();
+    }
+
+    @ApiOperation("根据id删除")
+    @DeleteMapping("/deleteById/{id}")
+    public R deleteById(@PathVariable Long id){
+        hospitalSetService.removeById(id);
         return R.ok();
     }
 
