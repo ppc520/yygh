@@ -1,14 +1,22 @@
 package com.ppc.yygh.cmn.controller;
 
 
+import com.alibaba.excel.EasyExcel;
 import com.atguigu.yygh.model.cmn.Dict;
+import com.atguigu.yygh.vo.cmn.DictEeVo;
+import com.ppc.yygh.cmn.listener.DictListener;
 import com.ppc.yygh.cmn.service.DictService;
 import com.ppc.yygh.common.result.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +39,15 @@ public class DictController {
     public R getChildListByParentId(@PathVariable Long pid){
         List<Dict> list= dictService.getChildByPid(pid);
         return R.ok().data("items",list);
+    }
+    @GetMapping("/download")
+    public void download(HttpServletResponse response) throws IOException {
+            dictService.download(response);
+    }
+    @PostMapping("/upload")
+    public R upload(MultipartFile file) throws IOException {//变量名file必须和前端upload组件的name属性一致
+        dictService.upload(file);
+        return R.ok();
     }
 }
 
