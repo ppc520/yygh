@@ -2,15 +2,15 @@ package com.ppc.yygh.cmn.service.impl;
 
 
 import com.alibaba.excel.EasyExcel;
-import com.atguigu.yygh.model.cmn.Dict;
-import com.atguigu.yygh.vo.cmn.DictEeVo;
+import com.ppc.yygh.model.cmn.Dict;
+import com.ppc.yygh.vo.cmn.DictEeVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ppc.yygh.cmn.listener.DictListener;
 import com.ppc.yygh.cmn.mapper.DictMapper;
 import com.ppc.yygh.cmn.service.DictService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -32,7 +32,7 @@ import java.util.List;
 @Service
 public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements DictService {
 
-    @Cacheable(value = "abc")
+    @Cacheable(value = "abc",keyGenerator = "keyGenerator")
     @Override
     public List<Dict> getChildByPid(Long pid) {
         QueryWrapper<Dict> queryWrapper=new QueryWrapper<Dict>();
@@ -64,6 +64,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
         EasyExcel.write(response.getOutputStream(),DictEeVo.class).sheet(0).doWrite(dictEeVoList);
     }
 
+    @CacheEvict(value = "abc",allEntries = true)
     @Override
     public void upload(MultipartFile file) throws IOException {
         EasyExcel.read(file.getInputStream(),DictEeVo.class,new DictListener(this)).sheet(0).doRead();

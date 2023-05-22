@@ -2,10 +2,9 @@ package com.ppc.yygh.cmn.listener;
 
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
-import com.atguigu.yygh.model.cmn.Dict;
-import com.atguigu.yygh.vo.cmn.DictEeVo;
+import com.ppc.yygh.model.cmn.Dict;
+import com.ppc.yygh.vo.cmn.DictEeVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.ppc.yygh.cmn.mapper.DictMapper;
 import com.ppc.yygh.cmn.service.DictService;
 import org.springframework.beans.BeanUtils;
 

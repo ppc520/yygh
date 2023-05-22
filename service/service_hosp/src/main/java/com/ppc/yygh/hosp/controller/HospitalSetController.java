@@ -1,8 +1,8 @@
 package com.ppc.yygh.hosp.controller;
 
 
-import com.atguigu.yygh.model.hosp.HospitalSet;
-import com.atguigu.yygh.vo.hosp.HospitalSetQueryVo;
+import com.ppc.yygh.model.hosp.HospitalSet;
+import com.ppc.yygh.vo.hosp.HospitalSetQueryVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ppc.yygh.common.exception.YyghException;

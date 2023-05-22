@@ -1,7 +1,8 @@
 package com.ppc.yygh.hosp.mapper;
 
-import com.atguigu.yygh.model.hosp.HospitalSet;
+import com.ppc.yygh.model.hosp.HospitalSet;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author ppc
  * @since 2023-05-13
  */
+@Repository
 public interface HospitalSetMapper extends BaseMapper<HospitalSet> {
 
 }

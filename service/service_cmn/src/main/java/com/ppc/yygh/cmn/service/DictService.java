@@ -1,6 +1,6 @@
 package com.ppc.yygh.cmn.service;
 
-import com.atguigu.yygh.model.cmn.Dict;
+import com.ppc.yygh.model.cmn.Dict;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.web.multipart.MultipartFile;
 

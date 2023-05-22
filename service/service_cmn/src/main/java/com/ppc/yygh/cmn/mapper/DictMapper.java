@@ -1,6 +1,6 @@
 package com.ppc.yygh.cmn.mapper;
 
-import com.atguigu.yygh.model.cmn.Dict;
+import com.ppc.yygh.model.cmn.Dict;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

@@ -1,6 +1,6 @@
 package com.ppc.yygh.hosp.service;
 
-import com.atguigu.yygh.model.hosp.HospitalSet;
+import com.ppc.yygh.model.hosp.HospitalSet;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

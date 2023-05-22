@@ -1,6 +1,6 @@
 package com.ppc.yygh.hosp.controller;
 
-import com.atguigu.yygh.model.acl.User;
+import com.ppc.yygh.model.acl.User;
 import com.ppc.yygh.common.result.R;
 import org.springframework.web.bind.annotation.*;
 
