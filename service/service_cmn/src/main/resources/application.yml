@@ -24,3 +24,7 @@ spring:
         max-wait: -1
         max-idle: 5
         min-idle: 0
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848

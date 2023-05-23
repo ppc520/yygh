@@ -51,6 +51,15 @@ public class DepartmentServiceImpl implements DepartmentService {
         Pageable pageable= PageRequest.of(page-1,limit);
         Page<Department> all=departmentRepository.findAll(example,pageable);
         return all;
+    }
 
+    @Override
+    public void remove(Map map) {
+        String hoscode = (String) map.get("hoscode");
+        String depcode = (String) map.get("depcode");
+        Department department = departmentRepository.findByHoscodeAndDepcode(hoscode, depcode);
+        if (department!=null){
+            departmentRepository.delete(department);
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.ppc.yygh.hosp;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
@@ -10,6 +11,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @ComponentScan("com.ppc.yygh")
 @MapperScan("com.ppc.yygh.hosp.mapper")
 @EnableMongoRepositories("com.ppc.yygh.hosp.repository")
+@EnableDiscoveryClient
 public class ServiceHospMainStarter {
     public static void main(String[] args) {
         SpringApplication.run(ServiceHospMainStarter.class,args);

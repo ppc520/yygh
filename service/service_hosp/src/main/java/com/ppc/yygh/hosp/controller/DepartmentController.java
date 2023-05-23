@@ -30,4 +30,9 @@ public class DepartmentController {
         Page<Department> page=departmentService.getDepartmentPage(map);
         return Result.ok(page);
     }
+    @PostMapping("/department/remove")
+    public Result remove(@RequestParam Map map){
+        departmentService.remove(map);
+        return Result.ok();
+    }
 }

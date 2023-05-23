@@ -9,4 +9,6 @@ public interface DepartmentService {
     void saveDepartment(Map<String, Object> stringObjectMap);
 
     Page<Department> getDepartmentPage(Map map);
+
+    void remove(Map map);
 }
