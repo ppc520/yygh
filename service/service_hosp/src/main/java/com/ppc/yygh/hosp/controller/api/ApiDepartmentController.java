@@ -1,6 +1,5 @@
-package com.ppc.yygh.hosp.controller;
+package com.ppc.yygh.hosp.controller.api;
 
-import com.ppc.yygh.hosp.repository.DepartmentRepository;
 import com.ppc.yygh.hosp.result.Result;
 import com.ppc.yygh.hosp.service.DepartmentService;
 import com.ppc.yygh.hosp.utils.HttpRequestHelper;
@@ -10,12 +9,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/hosp")
-public class DepartmentController {
+public class ApiDepartmentController {
     @Autowired
     private DepartmentService departmentService;
     @PostMapping("/saveDepartment")

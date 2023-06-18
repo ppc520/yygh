@@ -1,4 +1,4 @@
-package com.ppc.yygh.hosp.controller;
+package com.ppc.yygh.hosp.controller.api;
 
 import com.ppc.yygh.hosp.result.Result;
 import com.ppc.yygh.hosp.service.ScheduleService;
@@ -16,7 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/hosp")
-public class ScheduleController {
+public class ApiScheduleController {
     @Autowired
     private ScheduleService scheduleService;
     @PostMapping("/saveSchedule")

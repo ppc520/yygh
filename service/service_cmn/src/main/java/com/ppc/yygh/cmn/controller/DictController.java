@@ -22,7 +22,7 @@ import java.util.List;
  * @author ppc
  * @since 2023-05-19
  */
-@CrossOrigin
+
 @RestController
 @Api(tags = "数据字典")
 @RequestMapping("/admin/cmn")
@@ -43,6 +43,16 @@ public class DictController {
     public R upload(MultipartFile file) throws IOException {//变量名file必须和前端upload组件的name属性一致
         dictService.upload(file);
         return R.ok();
+    }
+    //根据医院市编号获取省市区文字
+    @GetMapping("/{value}")
+    public String getNameByValue(@PathVariable("value") Long value){
+        return dictService.getNameByValue(value);
+    }
+    //根据医院等级编号获取医院等级信息
+    @GetMapping("/{dictCode}/{value}")
+    public String getNameByDictCodeAndValue(@PathVariable("value") Long value,@PathVariable("dictCode") String dictCode){
+        return dictService.getNameByDictCodeAndValue(dictCode,value);
     }
 }
 

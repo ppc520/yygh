@@ -1,0 +1,39 @@
+server:
+  port: 8222
+spring:
+  application:
+    name: service-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: service-hosp1 #可随意定义，最好与微服务在nacos的注册名相同
+          uri:
+            lb://service-hosp
+          predicates:
+            - Path=/*/hosp/** #路径匹配
+        - id: service-hosp2 #可随意定义，最好与微服务在nacos的注册名相同
+          uri:
+            lb://service-hosp
+          predicates:
+            - Path=/*/hospital/** #路径匹配
+        - id: service-hosp3 #可随意定义，最好与微服务在nacos的注册名相同
+          uri:
+            lb://service-hosp
+          predicates:
+            - Path=/*/user/** #路径匹配
+        - id: service-cmn #可随意定义，最好与微服务在nacos的注册名相同
+          uri:
+            lb://service-cmn
+          predicates:
+            - Path=/*/cmn/** #路径匹配
+        - id: service-cmn #可随意定义，最好与微服务在nacos的注册名相同
+          uri:
+            lb://service-cmn
+          predicates:
+            - Path=/admin/** #兜底

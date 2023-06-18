@@ -1,4 +1,4 @@
-package com.ppc.yygh.hosp.controller;
+package com.ppc.yygh.hosp.controller.admin;
 
 
 import com.ppc.yygh.model.hosp.HospitalSet;
@@ -26,11 +26,10 @@ import java.util.Random;
  * @author ppc
  * @since 2023-05-13
  */
-@CrossOrigin
 @RestController
 @Api(tags = "医院设置信息")
 @RequestMapping("/admin/hosp/hospitalSet")
-public class HospitalSetController {
+public class AdminHospitalSetController {
     @Autowired
     private HospitalSetService hospitalSetService;
 

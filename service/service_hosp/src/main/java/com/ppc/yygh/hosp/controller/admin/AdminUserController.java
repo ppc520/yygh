@@ -1,13 +1,12 @@
-package com.ppc.yygh.hosp.controller;
+package com.ppc.yygh.hosp.controller.admin;
 
 import com.ppc.yygh.model.acl.User;
 import com.ppc.yygh.common.result.R;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/admin/user")
-public class UserController {
+public class AdminUserController {
 
     @PostMapping("/login")
     public R loging(@RequestBody User user){

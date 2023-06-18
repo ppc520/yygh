@@ -1,4 +1,4 @@
-package com.ppc.yygh.hosp.controller;
+package com.ppc.yygh.hosp.controller.api;
 
 import com.ppc.yygh.model.hosp.Hospital;
 import com.ppc.yygh.common.exception.YyghException;
@@ -16,7 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/hosp")
-public class HospitalController {
+public class ApiHospitalController {
     @Autowired
     private HospitalService hospitalService;
 
@@ -36,8 +36,7 @@ public class HospitalController {
         String platformSignKey=hospitalService.getSignKeyByHoscode(hoscode);
         if(reqSignKey!=null&&platformSignKey!=null&&reqSignKey.equals(DigestUtils.md5DigestAsHex(platformSignKey.getBytes()))){
             String logoData = (String) map.get("logoData");
-            logoData.replaceAll(" ","+");
-            map.put("logoData",logoData);
+            map.put("logoData",logoData.replaceAll(" ","+"));
             hospitalService.saveHospital(map);
             return Result.ok();
         }else {
